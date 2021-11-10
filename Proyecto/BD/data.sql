@@ -1,1 +1,0 @@
-/* Base de Datos Relacional PostGresql-6.3 */
