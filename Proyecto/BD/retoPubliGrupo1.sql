@@ -17,11 +17,27 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
 -- Base de datos: `retoPubliGrupo1`
---
 CREATE DATABASE retoPubliGrupo1 CHARACTER SET utf8mb4;
 USE retoPubliGrupo1;
+
+--Creación de usuario
+--CREATE LOGIN nuevoUser WITH PASSWORD ='12345';
+
+CREATE USER SERVER IDENTIFIED BY 12345
+            DEFAULT TABLESPACE data
+            TEMPORARY TABLESPACE temp
+            QUOTA UNLIMITED ON data;
+
+GRANT CREATE session, CREATE table, CREATE view, 
+      CREATE procedure,CREATE synonym,
+      ALTER table, ALTER view, ALTER procedure,ALTER synonym,
+      DROP table, DROP view, DROP procedure,DROP synonym,
+      TO SERVER;
+
+FLUSH CACHE{(tam|*)};
+--
+
 -- --------------------------------------------------------
 
 --
