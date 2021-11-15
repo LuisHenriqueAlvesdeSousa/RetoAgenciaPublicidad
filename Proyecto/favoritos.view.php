@@ -23,7 +23,7 @@
             <input type="button" id="singup" value="Cuenta"/>
         </div>
     </header>
-    <section id="anuncios">
+    <section id="anunciosFav">
     	
     </section>
     <footer>
