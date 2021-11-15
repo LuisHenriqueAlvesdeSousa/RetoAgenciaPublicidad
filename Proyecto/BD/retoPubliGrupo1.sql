@@ -24,16 +24,10 @@ USE retoPubliGrupo1;
 --Creación de usuario
 --CREATE LOGIN nuevoUser WITH PASSWORD ='12345';
 
-CREATE USER SERVER IDENTIFIED BY 12345
-            DEFAULT TABLESPACE data
-            TEMPORARY TABLESPACE temp
-            QUOTA UNLIMITED ON data;
+CREATE USER 'SERVER'@'localhost' IDENTIFIED BY '12345';
 
-GRANT CREATE session, CREATE table, CREATE view, 
-      CREATE procedure,CREATE synonym,
-      ALTER table, ALTER view, ALTER procedure,ALTER synonym,
-      DROP table, DROP view, DROP procedure,DROP synonym,
-      TO SERVER;
+GRANT ALL PRIVILEGES ON * . * TO 'SERVER'@'localhost';
+FLUSH PRIVILEGES;
 
 FLUSH CACHE{(tam|*)};
 
