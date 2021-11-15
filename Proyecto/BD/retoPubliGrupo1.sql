@@ -29,7 +29,7 @@ CREATE USER 'SERVER'@'localhost' IDENTIFIED BY '12345';
 GRANT ALL PRIVILEGES ON * . * TO 'SERVER'@'localhost';
 FLUSH PRIVILEGES;
 
-FLUSH CACHE{(tam|*)};
+DBCC DROPCLEANBUFFERS;
 
 -- --------------------------------------------------------
 
