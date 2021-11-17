@@ -1,14 +1,14 @@
 <?php
-    $to = $_GET["correo"];
+    $to = "gmediero123@gmail.com";
+    $nombre = $_GET["nombre"];
     $asunto = $_GET["asunto"];
+    $correo = $_GET["correo"];
     $mensaje = $_GET["mensaje"];
+    $contenido = "Nombre: ". $nombre . "\nCorreo: " . $correo . "\n" .$mensaje;
 
-if (isset($to) && isset($asunto) && isset($mensaje)) {
-    mail($to,$asunto,$mensaje);
-    echo "Correo enviado";
-}
-else{
-    echo "Problemas";
-}
+    mail($to,$asunto,$contenido);
 
+
+
+require "EnviarFormulario.view.php";
 ?>

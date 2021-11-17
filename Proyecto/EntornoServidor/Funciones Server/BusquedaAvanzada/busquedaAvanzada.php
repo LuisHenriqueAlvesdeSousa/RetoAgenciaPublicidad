@@ -8,20 +8,18 @@
 
     $dbh = connect($host,$dbname,$user,$pass);
 
+    $producto = $_GET["producto"];
     $categoria = $_GET["categoria"];
     $precio = $_GET["precio"];
     $provincia = $_GET["provincia"];
 
-    if (isset($_GET["producto"])) {
-        $producto = $_GET["producto"];
-        filtrarProducto($categoria,$precio,$provincia,$producto, $dbh);
-    }
+    filtrar($categoria,$precio,$provincia,$producto, $dbh);
 
-
-    function mostrarAnuncios($dbh){
-        $stmt = $dbh->prepare("SELECT * FROM Anuncio");
+    function filtrarProducto($producto, $dbh){
+        $stmt = $dbh->prepare("SELECT * FROM Anuncio WHERE titulo LIKE ? ");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute();
+        $parametro = ["$producto%"];
+        $stmt->execute($parametro);
 
         while($row = $stmt->fetch()) {
             echo "<p>Nombre: ". $row->titulo . ", descripcion: ".$row->descripcion. ", precio: ".$row->precio.", fecha: ".$row->fchPublicacion.". </p>";
@@ -78,17 +76,17 @@
 
     }
 
-    function  mostrarPorProd($producto, $dbh){
-        $stmt = $dbh->prepare("SELECT * FROM Anuncio WHERE titulo LIKE :producto%");
+    function  mostrarPorProd($data, $dbh){
+        $stmt = $dbh->prepare("SELECT * FROM Anuncio WHERE titulo LIKE ':producto%'");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($producto);
+        $stmt->execute($data);
 
         while($row = $stmt->fetch()) {
             echo "<p>Nombre: ". $row->titulo . ", descripcion: ".$row->descripcion. ", precio: ".$row->precio.", fecha: ".$row->fchPublicacion.". </p>";
         }
     }
 
-    function filtrarProducto($categoria,$precio,$provincia,$producto, $dbh){
+    function filtrar($categoria,$precio,$provincia,$producto, $dbh){
         if ($precio == "" && $provincia == "") {
             mostrarPorProdCat(["categoria" => $categoria], $producto, $dbh);
         }
@@ -108,7 +106,7 @@
             mostrarPorPreProv(["categoria" => $categoria,"precio" => $precio], $producto, $dbh);
         }
         elseif($categoria == "" && $precio == "" && $provincia == ""){
-            mostrarPorProd($producto, $dbh);
+            mostrarPorProd(["producto" => $producto], $dbh);
         }
     }
 

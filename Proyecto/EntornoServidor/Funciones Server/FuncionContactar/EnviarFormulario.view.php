@@ -8,7 +8,8 @@
 </head>
 <body>
 <form action="EnviarFormulario.php" method="GET">
-    <input type="text" id="nombre" name="asunto" placeholder="Asunto"><br>
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre"><br>  
+    <input type="text" id="asunto" name="asunto" placeholder="Asunto"><br>
     <input type="text" id="correo" name="correo" placeholder="Correo Electronico"><br>
     <input type="text" id="mensaje" name="mensaje" placeholder="Envia un mensaje"><br>
     <input type="submit" value="Enviar correo">

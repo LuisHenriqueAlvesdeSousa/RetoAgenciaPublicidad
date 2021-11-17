@@ -30,6 +30,6 @@
             <?= mostrarProvincias($dbh)?>
         </select>
     </form>
-    <?= mostrarAnuncios($dbh)?>
+    <?= filtrarProducto($producto, $dbh)?>
 </body>
 </html>
