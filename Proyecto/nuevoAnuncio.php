@@ -1,5 +1,5 @@
 <?php
-
+include "conexion.php";
 //Comprobación de que los campos obligatorios contienen datos
 if($_POST){
     //Inserto en la BBDD
@@ -11,5 +11,5 @@ if($_POST){
     //Mostrar formulario
 }
 
-require nuevoAnuncio.view.php;
+require "nuevoAnuncio.view.php";
 ?>
