@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-11-2021 a las 08:59:01
+-- Tiempo de generación: 17-11-2021 a las 08:33:54
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -118,7 +118,7 @@ CREATE TABLE `Perfil` (
   `usuario` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `telefono` varchar(12) NOT NULL,
+  `telefono` varchar(12) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `provincia` varchar(50) DEFAULT NULL,
   `localidad` varchar(50) DEFAULT NULL,
