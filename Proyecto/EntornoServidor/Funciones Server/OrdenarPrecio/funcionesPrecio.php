@@ -44,5 +44,5 @@
         echo $row->precio. "<br>";
      }
  }
-    require "prueba.view.php";
+    require "prueba.view.php"; 
 ?>
