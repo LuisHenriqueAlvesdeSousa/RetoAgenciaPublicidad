@@ -25,13 +25,13 @@ CREATE TABLE `Anuncio` (
   `estado` tinyint(1) DEFAULT NULL,
   `pathFoto` varchar(150) DEFAULT NULL,
   `fchPublicacion` date NOT NULL,
-  `idPerfil-Admin` int(5) NOT NULL,
-  `idPerfil-Comprador` int(5) DEFAULT NULL,
+  `idPerfil_Admin` int(5) NOT NULL,
+  `idPerfil_Comprador` int(5) DEFAULT NULL,
   `idCategoria` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO `Anuncio` (`idAnuncio`, `titulo`, `descripcion`, `precio`, `estado`, `pathFoto`, `fchPublicacion`, `idPerfil-Admin`, `idPerfil-Comprador`, `idCategoria`) VALUES
+INSERT INTO `Anuncio` (`idAnuncio`, `titulo`, `descripcion`, `precio`, `estado`, `pathFoto`, `fchPublicacion`, `idPerfil_Admin`, `idPerfil_Comprador`, `idCategoria`) VALUES
 (1, 'Radiador', 'Radiador reshulon', 69.99, NULL, NULL, '2021-11-07', 1, NULL, 2),
 (2, 'Ordenador portatil mac nuevo', 'Ordenador portatil mac nuevo perfectas condiciones esta nuevo precio negociable', 450, NULL, NULL, '2021-11-10', 1, NULL, 3),
 (3, 'Camara Canon 450L', 'Regalo de navidad. No me gusta. Cambio por algo de precio similar. Precio negociable.', 300, NULL, NULL, '2021-11-10', 2, NULL, 4),
@@ -94,8 +94,8 @@ INSERT INTO `Perfil` (`idPerfil`, `usuario`, `password`, `email`, `telefono`, `d
 
 ALTER TABLE `Anuncio`
   ADD PRIMARY KEY (`idAnuncio`),
-  ADD KEY `anun_per_admin_fk` (`idPerfil-Admin`),
-  ADD KEY `anun_per_usu_fk` (`idPerfil-Comprador`),
+  ADD KEY `anun_per_admin_fk` (`idPerfil_Admin`),
+  ADD KEY `anun_per_usu_fk` (`idPerfil_Comprador`),
   ADD KEY `anun_cat_fk` (`idCategoria`);
 
 
@@ -127,8 +127,8 @@ ALTER TABLE `Perfil`
 
 ALTER TABLE `Anuncio`
   ADD CONSTRAINT `anun_cat_fk` FOREIGN KEY (`idCategoria`) REFERENCES `Categoria` (`idCategoria`),
-  ADD CONSTRAINT `anun_per_admin_fk` FOREIGN KEY (`idPerfil-Admin`) REFERENCES `Perfil` (`idPerfil`),
-  ADD CONSTRAINT `anun_per_usu_fk` FOREIGN KEY (`idPerfil-Comprador`) REFERENCES `Perfil` (`idPerfil`);
+  ADD CONSTRAINT `anun_per_admin_fk` FOREIGN KEY (`idPerfil_Admin`) REFERENCES `Perfil` (`idPerfil`),
+  ADD CONSTRAINT `anun_per_usu_fk` FOREIGN KEY (`idPerfil_Comprador`) REFERENCES `Perfil` (`idPerfil`);
 
 ALTER TABLE `Interaccion`
   ADD CONSTRAINT `inter_anuncio_perfil_fk` FOREIGN KEY (`idAnuncio`) REFERENCES `Perfil` (`idPerfil`),
@@ -144,8 +144,8 @@ V_ERROR VARCHAR2(250);
 V_IDADMIN NUMBER(5);
 V_IDCOMPRA NUMBER(5);
 BEGIN
-  SELECT `idPerfil-Admin` FROM `Anuncio` INTO V_IDADMIN;
-  SELECT `idPerfil-Comprador` FROM `Anuncio` INTO V_IDCOMPRA;
+  SELECT idPerfil_Admin FROM Anuncio INTO V_IDADMIN;
+  SELECT idPerfil_Comprador FROM Anuncio INTO V_IDCOMPRA;
   IF V_IDADMIN=V_IDCOMPRA THEN
   RAISE_APPLICATION_ERROR(-20000, 'No puedes comprar tu propio anuncio');
   END IF;

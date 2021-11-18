@@ -1,6 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
-$title_pag="LoVendo - Nuevo Anuncio";
-include("header.php");
+    //Le paso la variable para el titulo de la página en cuestión
+    $title_pag="LoVendo - Nuevo Anuncio";
+    require "./VIEW/ESTRUCTURA/ESTATICO/head.meta.php";
+
+?>
+    
+<body>
+
+<?php 
+
+    require "./VIEW/ESTRUCTURA/ESTATICO/header.view.php";
+    require "./VIEW/ESTRUCTURA/ESTATICO/nav.view.php";
+
 ?>
     <section id="crearAnuncio">
         <h1>Crear Anuncio</h1>
@@ -26,6 +39,12 @@ include("header.php");
             <label>Los campos marcados con * son obligatorios</label>
         </form>
     </section>  
+
 <?php
-include("footer.php");
+
+require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
+
 ?>
+
+</body>
+</html>
