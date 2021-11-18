@@ -15,8 +15,8 @@
 
     filtrar($categoria,$precio,$provincia,$producto, $dbh);
 
-    function filtrarProducto($producto, $dbh){
-        $stmt = $dbh->prepare("SELECT * FROM Anuncio WHERE titulo LIKE ? ");
+    function filtrarProducto($sql, $producto, $dbh){
+        $stmt = $dbh->prepare("SELECT * FROM Anuncio $sql");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $parametro = ["$producto%"];
         $stmt->execute($parametro);
@@ -46,68 +46,29 @@
         }
     }
 
-    function mostrarPorProdCat($data, $producto,$dbh){
-        $stmt = $dbh->prepare("SELECT * FROM Anuncio WHERE titulo LIKE ");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute();
-
-        while($row = $stmt->fetch()) {
-            echo "<p>Nombre: ". $row->titulo . ", descripcion: ".$row->descripcion. ", precio: ".$row->precio.", fecha: ".$row->fchPublicacion.". </p>";
-        }
-    }
-
-    function mostrarPorProdPre($data, $producto,$dbh){
-
-    }
-
-    function mostrarPorProdProv($data, $producto, $dbh){
-
-    }
-
-    function mostrarPorPreProvProd($data, $producto, $dbh){
-
-    }
-
-    function mostrarPorCatProvProd($data, $producto, $dbh){
-
-    }
-
-    function mostrarPorPreProv($data, $producto, $dbh){
-
-    }
-
-    function  mostrarPorProd($data, $dbh){
-        $stmt = $dbh->prepare("SELECT * FROM Anuncio WHERE titulo LIKE ':producto%'");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
-
-        while($row = $stmt->fetch()) {
-            echo "<p>Nombre: ". $row->titulo . ", descripcion: ".$row->descripcion. ", precio: ".$row->precio.", fecha: ".$row->fchPublicacion.". </p>";
-        }
-    }
-
     function filtrar($categoria,$precio,$provincia,$producto, $dbh){
-        if ($precio == "" && $provincia == "") {
-            mostrarPorProdCat(["categoria" => $categoria], $producto, $dbh);
+        $sql = "WHERE titulo LIKE ?";
+        if (isset($categoria) && $categoria != "") {
+            $sql .= " AND categoria = '$categoria'";
         }
-        elseif ($categoria == "" && $provincia == "") {
-            mostrarPorProdPre(["precio" => $precio], $producto, $dbh);
+        elseif (isset($precio) && $precio != ""){
+            switch($precio){
+                case "menos100":
+                    $sql .= " AND precio < 100";
+                break;
+                case "entre100-300" :
+                    $sql .= " AND precio BETWEEN 100 AND 300";
+                break;  
+                case "mas300" :
+                    $sql .= " AND precio > 300" ;
+                break;     
+            }
         }
-        elseif ($categoria == "" && $precio == "") {
-            mostrarPorProdProv(["provincia" => $provincia], $producto, $dbh);
+        elseif (isset($provincia) && $provincia != ""){
+            $sql .= " AND ubicacion = '$provincia'";
         }
-        elseif ($categoria == "") {
-            mostrarPorPreProvProd(["provincia" => $provincia, "precio" => $precio], $producto, $dbh);
-        }
-        elseif ($precio == "") {
-            mostrarPorCatProvProd(["categoria" => $categoria, "provincia" => $provincia], $producto, $dbh);
-        }
-        elseif ($provincia == "") {
-            mostrarPorPreProv(["categoria" => $categoria,"precio" => $precio], $producto, $dbh);
-        }
-        elseif($categoria == "" && $precio == "" && $provincia == ""){
-            mostrarPorProd(["producto" => $producto], $dbh);
-        }
+
+        filtrarProducto($sql, $producto, $dbh);
     }
 
     require "busquedaAvanzada.view.php";

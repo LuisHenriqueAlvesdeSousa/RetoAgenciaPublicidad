@@ -1,5 +1,6 @@
 <?php
-    $to = "gmediero123@gmail.com";
+    $to = "guillermo.mediero@ikasle.egibide.org
+    ";
     $nombre = $_GET["nombre"];
     $asunto = $_GET["asunto"];
     $correo = $_GET["correo"];
