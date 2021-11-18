@@ -9,24 +9,36 @@ ssh-keygen
 
 #Instalacion y configuracion de apache2
 sudo apt install apache2 -y
+
+sudo cp /vagrant_data/index.php /var/www/html/
+
 #cp index.php /var/www/html/
 #cp error.php /var/www/html/
+
 sudo cp /vagrant_data/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Intalacion y configuracion de FTP
 sudo apt install vsftpd -y
 sudo cp /vagrant_data/vsftpd.conf /etc/vsftpd.conf
-sudo service vsftpd restrart
+
+sudo service vsftpd restart
 
 #Intalacion y configuracion de 
 sudo apt install php libapache2-mod-php php-mysql -y
+sudo apt install composer -y
+sudo apt install ruby -y
 sudo cp /vagrant_data/dir.conf /etc/apache2/mods-enabled/dir.conf
-sudo service apache2 restrart
+composer require lorddashme/php-cryptor
+gem install stripe
+sudo service apache2 restart
+
+#Instalacion y configuracion SMPT
+sudo apt install mailutils -y
+sudo cp /vagrant_data/main.cf /etc/postfix/main.cf
+sudo service postfix restart;
 
 #Instalacion y configuracion de mysql
 sudo apt install mysql-server -y
-sudo service mysql restrart
-sudo mysql < /vagrant_data/retoPuliGrupo1.sql
-
-
+sudo mysql < /vagrant_data/retoPubliGrupo1.sql
+sudo service mysql restart
 
