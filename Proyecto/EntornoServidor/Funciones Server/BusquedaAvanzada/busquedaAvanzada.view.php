@@ -25,7 +25,7 @@
             <option value="mas300">Mas de 300</option>
         </select>
         <label>Provincia</label>
-        <select name="privoncia" id="">
+        <select name="provincia" id="">
             <option value="">...</option>
             <?= mostrarProvincias($dbh)?>
         </select>
