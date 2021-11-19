@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <?php
     //Le paso la variable para el titulo de la página en cuestión
     $title_pag="LoVendo - Nuevo Anuncio";
@@ -15,7 +15,7 @@
     require "./VIEW/ESTRUCTURA/ESTATICO/nav.view.php";
 
 ?>
-    <section id="crearAnuncio">
+    <div id="crearAnuncio">
         <h1>Crear Anuncio</h1>
     	<form name="formularioAnuncio" action="<?echo $_SERVER["PHP_SELF"]?>" type="POST" id="formAnuncio">
             <!--Introducir datos del anuncio-->
@@ -35,10 +35,9 @@
             </select><label>*</label>
             <input type="file" id="fotoAnuncio" name="imagen"/>
             <input type="submit" name="crear" id="publicarAnuncio" value="Publicar"/>
-
             <label>Los campos marcados con * son obligatorios</label>
         </form>
-    </section>  
+    </div>  
 
 <?php
 
