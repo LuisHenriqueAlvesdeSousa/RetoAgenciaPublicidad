@@ -1,28 +1,18 @@
 <?php
-    //Creación objeto anuncio a partir de Formulario
-    
-    
-    
-    /*
+    //Inserción en BBDD
+    try{
     require "/BD/CONEXION/conexion.php";
 
     $anuncio = json_decode($_POST["json"]);
 
     $conexion = new Conexion();
     $c = $conexion.getConexion();
-    $sql = "INSERT INTO Anuncio (titulo, descripcion, precio, fchPublicacion, idPerfil_Admin, idCategoria) VALUES (?,?,?,?,?,?);";
-    $statement = $c->prepare($sql);
-    $respuesta = false;
-    foreach($anuncio->{"datoPerfil"} as $dAnuncio){
-        $statement->bindParam(1, $dAnuncio->{"titulo"}, PDO::PARAM_STR);
-        $statement->bindParam(2, $dAnuncio->{"descripcion"}, PDO::PARAM_STR);
-        $statement->bindParam(3, $dAnuncio->{"precio"}, PDO::PARAM_FLOAT);
-        $statement->bindParam(4, $dAnuncio->{"fchPublicacion"}, PDO::PARAM_DATE);
-        $statement->bindParam(5, $dAnuncio->{"idPerfil_Admin"}, PDO::PARAM_INT);
-        $statement->bindParam(6, $dAnuncio->{"idCategoria"}, PDO::PARAM_INT);
-        $respuesta = $statement->execute();
-    }
-
+    $sql = "INSERT INTO Anuncio (titulo, descripcion, precio, pathFoto, fchPublicacion, idPerfil_Admin, idCategoria) VALUES (?,?,?,?,?,?,?);";
+    $st = $c->prepare($sql);
+    $respuesta = $st->execute($anuncio.titulo, $anuncio.descripcion, $anuncio.precio, $anuncio.pathFoto, $anuncio.fchPublicacion, $anuncio.idPerfil_Admin, $anuncio.idCategoria);
+    $c=null;
     echo $respuesta;
-    */
+    }catch(Exception $e){
+        echo "#ERROR: ".$e->getMessage();
+    }
 ?>

@@ -13,37 +13,18 @@
 ?>
 <section id="prevAnuncio">
 <div id="montarAnuncio">
-
+    <!--Construir div de anuncio a partir de objeto-->
 </div>
 <div id="confirmarEnvío">
     <form>
         <h1>¿Quieres publicar este anuncio?</h1>
         <input type="button" value="Publicar" id="botonPublicar" name="botonPublicar"/>
+        <!--Subir anuncio a la base de datos y mandar a perfil-->
         <input type="button" value="Cancelar" id="botonCancel" name="botonCancel"/> 
+        <!--Cancelar y borrar anuncio-->
     </form>
 </div>
 </section>
-<script>
-    //Subir objeto anuncio creado a la base de datos
-      $(function(){
-         listar();
-      });  
-      function listar(){
-        __ajax("previsualizarAnuncio.php", "")
-        .done(function(info){
-            var anuncios = JSON.parse(info);
-            var html = ""
-        });
-      }
-      function __ajax(){
-          $.ajax({
-              "method": "POST",
-              "url": url,
-              "data": data
-          })
-          return ajax;
-      }
-</script>
 <?php
     require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
 ?>

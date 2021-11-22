@@ -38,7 +38,6 @@
             <label>Los campos marcados con * son obligatorios</label>
         </form>
     </div>  
-
 <?php
 
 require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
