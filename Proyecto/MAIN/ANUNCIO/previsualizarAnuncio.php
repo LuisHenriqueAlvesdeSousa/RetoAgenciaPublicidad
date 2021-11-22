@@ -14,7 +14,6 @@
     }else{
         echo "error";
     }
-
     $conexion = null;
     require "previsualizarAnuncio.view.php";
 ?>
