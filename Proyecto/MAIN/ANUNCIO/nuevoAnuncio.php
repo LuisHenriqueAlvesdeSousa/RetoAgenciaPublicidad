@@ -1,15 +1,20 @@
 <?php
-include "conexion.php";
-//Comprobación de que los campos obligatorios contienen datos
-if($_POST){
-    //Inserto en la BBDD
-    $ssql = "insert into Anuncio() values('". $_POST["titulo"] ."', '". $_POST["descripcion"]")"
-    if(mysql_query($ssql)){
-        
+    require "/BD/CONEXION/conexion.php";
+    $conexion = new Conexion();
+    $cnn = $conexion->getConexion();
+    llenarSelect();
+    //Poblar la select
+
+    function llenarSelect(){
+        $ssql = "SELECT * FROM Categoria";
+        $rs = mysql_query($ssql);
+        while($fila = mysql_fetch_array($rs)){
+            echo "<option value=".$fila["idCategoria"].">".$fila["nombre"]."</option>";
+        }
+        mysql_free_result($rs);
     }
-}else{
-    //Mostrar formulario
-}
+//Comprobación de que los campos obligatorios contienen datos
+
 
 require "nuevoAnuncio.view.php";
 ?>

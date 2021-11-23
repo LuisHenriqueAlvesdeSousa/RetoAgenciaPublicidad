@@ -25,7 +25,7 @@
             <select name="selectCat" id="selCategorias">
                 <!--Lleno la select-->
                 <?php
-                $ssql = "select * from Categoria";
+                $ssql = "SELECT * FROM Categoria";
                 $rs = mysql_query($ssql);
                 while($fila = mysql_fetch_array($rs)){
                     echo "<option value=".$fila["idCategoria"].">".$fila["nombre"]."</option>";
@@ -39,10 +39,8 @@
         </form>
     </div>  
 <?php
-
 require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
-
 ?>
-
+<script src="./MAIN/ANUNCIO/nuevoAnuncio.js"></script>
 </body>
 </html>

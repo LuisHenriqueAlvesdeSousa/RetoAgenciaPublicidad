@@ -28,5 +28,6 @@
 <?php
     require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
 ?>
+<script src="./MAIN/ANUNCIO/previsualizarAnuncio.js"></script>
 </body>
 </html>

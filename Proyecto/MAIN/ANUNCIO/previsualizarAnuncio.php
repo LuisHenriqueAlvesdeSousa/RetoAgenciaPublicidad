@@ -1,4 +1,9 @@
 <?php
+//Construir Div a partir del objeto Anuncio
+
+//Si compra llamar a función insertar en BBDD
+
+//Si cancela retornar a index
     require "/BD/CONEXION/conexion.php";
     $conexion = new Conexion();
     $cnn = $conexion->getConexion();
