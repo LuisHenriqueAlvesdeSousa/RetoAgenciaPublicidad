@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Busqueda avanzanda</h1>
-    <form action="busquedaAvanzada.php" method="GET">
-        <input type="text" id="busqueda" name="producto">
-        <input type="submit" value="Buscar">
-    </form>
-    <?= filtrarProducto($producto, $dbh)?>
+    <h1>Catalogo de productos</h1>
+    <?= mostrarAnuncios($dbh)?>
 </body>
 </html>

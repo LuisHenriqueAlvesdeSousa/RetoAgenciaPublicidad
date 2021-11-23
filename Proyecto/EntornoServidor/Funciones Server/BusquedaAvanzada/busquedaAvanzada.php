@@ -12,11 +12,13 @@
     $categoria = $_GET["categoria"];
     $precio = $_GET["precio"];
     $provincia = $_GET["provincia"];
+    $ordenar = $_GET["ordenar"];
 
-    filtrar($categoria,$precio,$provincia,$producto, $dbh);
+    filtrar($categoria,$precio,$provincia,$producto,$ordenar, $dbh);
 
     function filtrarProducto($sql, $producto, $dbh){
-        $stmt = $dbh->prepare("SELECT * FROM Anuncio $sql");
+
+        $stmt = $dbh->prepare("SELECT a.titulo, a.descripcion, a.precio, a.fchPublicacion FROM Anuncio a, Categoria c, Perfil p WHERE a.idCategoria = c.idCategoria AND a.idPerfil_Admin = p.idPerfil $sql");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $parametro = ["$producto%"];
         $stmt->execute($parametro);
@@ -27,46 +29,129 @@
     }
 
     function mostrarCategoria($dbh){
-        $stmt = $dbh->prepare("SELECT DISTINCT nombre FROM Categoria");
+        $stmt = $dbh->prepare("SELECT idCategoria,nombre FROM Categoria");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute();
 
         while($row = $stmt->fetch()) {
-            echo "<option value=".$row->nombre.">".$row->nombre."</option>";
+            echo "<option value=".$row->idCategoria.">".$row->nombre."</option>";
         }
     }
 
     function mostrarProvincias($dbh){
-        $stmt = $dbh->prepare("SELECT DISTINCT ubicacion FROM Anuncio");
+        $stmt = $dbh->prepare("SELECT DISTINCT provincia FROM Perfil");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute();
 
         while($row = $stmt->fetch()) {
-            echo "<option value=".$row->ubicacion.">".$row->ubicacion."</option>";
+            echo "<option value=".$row->provincia.">".$row->provincia."</option>";
         }
     }
 
-    function filtrar($categoria,$precio,$provincia,$producto, $dbh){
-        $sql = "WHERE titulo LIKE ?";
+    function filtrar($categoria,$precio,$provincia,$producto,$ordenar, $dbh){
+        $sql = "AND a.titulo LIKE ?";
         if (isset($categoria) && $categoria != "") {
-            $sql .= " AND categoria = '$categoria'";
+            $sql .= " AND c.idCategoria LIKE '$categoria'";
+            if (isset($precio) && $precio != ""){
+                switch($precio){
+                    case "menos100":
+                        $sql .= " AND a.precio < 100";
+                    break;
+                    case "entre100-300" :
+                        $sql .= " AND a.precio BETWEEN 100 AND 300";
+                    break;  
+                    case "mas300" :
+                        $sql .= " AND a.precio > 300" ;
+                    break;     
+                }
+            }
+            elseif (isset($provincia) && $provincia != ""){
+                $sql .= " AND p.provincia LIKE '$provincia'";
+            }
+            elseif(isset($ordenar)){
+                switch($ordenar){
+                    case "fechascendente": 
+                        $sql .= "ORDER BY a.fchPublicacion ASC";
+                    break;
+                    case "fechdescendente": 
+                        $sql .= "ORDER BY a.fchPublicacion DESC";
+                    break;
+                    case "preascendente": 
+                        $sql .= "ORDER BY a.precio ASC";
+                    break;
+                    case "predescentente": 
+                        $sql .= "ORDER BY a.precio DESC";
+                    break;
+                }
+            }
         }
         elseif (isset($precio) && $precio != ""){
             switch($precio){
                 case "menos100":
-                    $sql .= " AND precio < 100";
+                    $sql .= " AND a.precio < 100";
                 break;
                 case "entre100-300" :
-                    $sql .= " AND precio BETWEEN 100 AND 300";
+                    $sql .= " AND a.precio BETWEEN 100 AND 300";
                 break;  
                 case "mas300" :
-                    $sql .= " AND precio > 300" ;
+                    $sql .= " AND a.precio > 300" ;
                 break;     
             }
+            if (isset($provincia) && $provincia != ""){
+                $sql .= " AND p.provincia LIKE '$provincia'";
+            }
+            elseif(isset($ordenar)){
+                switch($ordenar){
+                    case "fechascendente": 
+                        $sql .= "ORDER BY a.fchPublicacion ASC";
+                    break;
+                    case "fechdescendente": 
+                        $sql .= "ORDER BY a.fchPublicacion DESC";
+                    break;
+                    case "preascendente": 
+                        $sql .= "ORDER BY a.precio ASC";
+                    break;
+                    case "predescentente": 
+                        $sql .= "ORDER BY a.precio DESC";
+                    break;
+                }
+        }
         }
         elseif (isset($provincia) && $provincia != ""){
-            $sql .= " AND ubicacion = '$provincia'";
+            $sql .= " AND p.provincia LIKE '$provincia'";
+            if(isset($ordenar)){
+                switch($ordenar){
+                    case "fechascendente": 
+                        $sql .= "ORDER BY a.fchPublicacion ASC";
+                    break;
+                    case "fechdescendente": 
+                        $sql .= "ORDER BY a.fchPublicacion DESC";
+                    break;
+                    case "preascendente": 
+                        $sql .= "ORDER BY a.precio ASC";
+                    break;
+                    case "predescentente": 
+                        $sql .= "ORDER BY a.precio DESC";
+                    break;
+                }
         }
+    }
+    elseif(isset($ordenar)){
+        switch($ordenar){
+            case "fechascendente": 
+                $sql .= "ORDER BY a.fchPublicacion ASC";
+            break;
+            case "fechdescendente": 
+                $sql .= "ORDER BY a.fchPublicacion DESC";
+            break;
+            case "preascendente": 
+                $sql .= "ORDER BY a.precio ASC";
+            break;
+            case "predescentente": 
+                $sql .= "ORDER BY a.precio DESC";
+            break;
+    }
+    }
 
         filtrarProducto($sql, $producto, $dbh);
     }
