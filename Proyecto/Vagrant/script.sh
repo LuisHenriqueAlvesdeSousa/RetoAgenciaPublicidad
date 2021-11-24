@@ -1,33 +1,33 @@
 #!/bin/bash
 #Actualizamos los repositorios
-sudo apt-get update
+apt-get update
 
 #Instalacion de ssh y claves publicas y privadas
-sudo apt install openssh-server -y
+apt install openssh-server -y
 ssh-keygen
 
 
 #Instalacion y configuracion de apache2
-sudo apt install apache2 -y
-sudo cp /vagrant_data/index.php /var/www/html/
-sudo cp /vagrant_data/000-default.conf /etc/apache2/sites-available/000-default.conf
+apt install apache2 -y
+cp /vagrant_data/index.php /var/www/html/
+cp /vagrant_data/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 #Intalacion y configuracion de FTP
-sudo apt install vsftpd -y
-sudo cp /vagrant_data/vsftpd.conf /etc/vsftpd.conf
-sudo service vsftpd restart
+apt install vsftpd -y
+cp /vagrant_data/vsftpd.conf /etc/vsftpd.conf
+service vsftpd restart
 
 #Intalacion y configuracion de php
-sudo apt install php libapache2-mod-php php-mysql -y
-sudo apt install composer -y
-sudo apt install ruby -y
-sudo cp /vagrant_data/dir.conf /etc/apache2/mods-enabled/dir.conf
+apt install php libapache2-mod-php php-mysql -y
+apt install composer -y
+apt install ruby -y
+cp /vagrant_data/dir.conf /etc/apache2/mods-enabled/dir.conf
 composer require lorddashme/php-cryptor
 gem install stripe
-sudo service apache2 restart
+service apache2 restart
 
 #Instalacion y configuracion de mysql
-sudo apt install mysql-server -y
-sudo mysql < /vagrant_data/retoPubliGrupo1.sql
-sudo service mysql restart
+apt install mysql-server -y
+mysql < /vagrant_data/retoPubliGrupo1.sql
+service mysql restart
 
