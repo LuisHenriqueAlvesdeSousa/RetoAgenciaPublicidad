@@ -1,6 +1,11 @@
 <?php
-    function connect($host,$dbname,$user,$pass){
-        try{
+    function connect(){
+        try{      
+        $host = "localhost";
+        $dbname = "retoPubliGrupo1";
+        $user = "root";
+        $pass = "";
+        
             $dbh= new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
             return $dbh;
         }

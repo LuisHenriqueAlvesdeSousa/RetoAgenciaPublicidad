@@ -12,9 +12,9 @@
 <div id="contenido">
 <div id="buscador">
     <h1 style="color: green;">Busqueda avanzanda</h1>
-    <form action="verProductos.php" method="GET">
+    <form action="verProductos.php" method="POST">
         <input type="text" id="busqueda" name="producto">
-        <input type="submit" value="Buscar">
+        <input type="submit" id="bBuscar" value="Buscar">
         <p>Filtrar por:</p>
         <label>Categoria</label>
         <select name="categoria">
@@ -40,9 +40,12 @@
         <input type="radio" name="ordenar" value="preciodescendente"><label>Ordenar descententemente</label>
         <input type="radio" name="ordenar" value="precioascendente"><label>Ordenar ascendentemente</label>
     </form>
+    <fieldset>
+    <legend><h2>Catalogo de productos</h2></legend>
     <?php
-         filtrar($categoria,$precio,$provincia,$producto, $ordenar, $dbh); realizarAccion($sql, $accion, $dbh);
+        realizarAccion($categoria ,$precio ,$provincia ,$producto ,$ordenar, $sql, $accion, $dbh);
     ?>
+    </fieldset>
 </div>
 </div>   
 </body>

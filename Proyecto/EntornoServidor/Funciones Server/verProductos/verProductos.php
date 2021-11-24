@@ -1,13 +1,9 @@
 <?php
+require "UML/Anuncio.php";
 require "basedatos.php";
     session_start();
- 
-    $host = "localhost";
-    $dbname = "retoPubliGrupo1";
-    $user = "root";
-    $pass = "";
 
-    $dbh = connect($host,$dbname,$user,$pass);
+    $dbh = connect();
 
     $producto = $_GET["producto"];
     $categoria = $_GET["categoria"];
@@ -15,27 +11,10 @@ require "basedatos.php";
     $provincia = $_GET["provincia"];
     $ordenar = $_GET["ordenar"];
 
-    $_SESSION["searchProducto"] = $producto;
-    $_SESSION["searchCategoria"] = $categoria;
-    $_SESSION["searchPrecio"] = $precio;
-    $_SESSION["searchProvincia"] = $provincia;
-    $_SESSION["searchOrdenar"] = $ordenar;
-
     if (isset($_GET["accion"])) {
         $accion = $_GET["accion"];
     } 
 
-    function filtrarProducto($sql, $producto, $dbh){
-
-        $stmt = $dbh->prepare("SELECT a.titulo, a.precio, a.idAnuncio FROM Anuncio a, Categoria c, Perfil p WHERE a.idCategoria = c.idCategoria AND a.idPerfil_Admin = p.idPerfil $sql");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $parametro = ["$producto%"];
-        $stmt->execute($parametro);
-
-        while($row = $stmt->fetch()) {
-            echo "<p>Nombre: ". $row->titulo . ", precio: ".$row->precio.".<a href=\"verProductos.php?accion=mostrarmas&id=".$row->idAnuncio."\">Ver mas</a> <i class=\"far fa-heart\"></i></p>";
-        }
-    }
 
     function mostrarCategoria($dbh){
         $stmt = $dbh->prepare("SELECT idCategoria,nombre FROM Categoria");
@@ -57,8 +36,18 @@ require "basedatos.php";
         }
     }
 
-    function filtrar($categoria,$precio,$provincia,$producto,$ordenar, $dbh){
+    function realizarAccion($categoria,$precio,$provincia,$producto,$ordenar, $sql, $accion, $dbh){
+        switch($accion){
+            case "mostrarmas":
+                $id = $_GET["id"];
+                $sql .= " AND a.idAnuncio = '$id'";
+               require "detallesAnuncio.php";
+               die();
+        }
+        filtrar($categoria,$precio,$provincia,$producto,$ordenar, $dbh);
+    }
 
+    function filtrar($categoria,$precio,$provincia,$producto,$ordenar, $dbh){
         $sql = "AND a.titulo LIKE ?";
         if (isset($categoria) && $categoria != "") {
             $sql .= " AND c.idCategoria LIKE '$categoria'";
@@ -168,24 +157,24 @@ require "basedatos.php";
 
     }
 
-
-    function realizarAccion($sql, $accion, $dbh){
-        if (isset($categoria) && $categoria != "") {
-            if (isset($precio) && $precio != ""){
-               
+    function filtrarProducto($sql, $producto, $dbh){
+        try{
+            $stmt = $dbh->prepare("SELECT a.titulo, a.precio, a.idAnuncio FROM Anuncio a, Categoria c, Perfil p WHERE a.idCategoria = c.idCategoria AND a.idPerfil_Admin = p.idPerfil $sql");
+            $stmt->setFetchMode(PDO::FETCH_OBJ);
+            $parametro = ["$producto%"];
+            $valor = $stmt->execute($parametro);
+            
+            if($valor){
+                $listaAnuncios = Array();
+                while($row = $stmt->fetch()) {
+                    $a =  new Anuncio($row->titulo ,$row->precio);
+                    $listaAnuncios = $a;
             }
-            elseif (isset($provincia) && $provincia != ""){
-
-            }    
-            elseif (isset($ordenar)){
-                
+            echo json_encode($listaAnuncios);
             }
         }
-        switch($accion){
-            case "mostrarmas":
-                $id = $_GET["id"];
-                $sql .= " AND a.idAnuncio = '$id'";
-                mostrarMasInfo($sql, $dbh);
+        catch (Exception $e){
+            echo "";
         }
     }
     
@@ -195,7 +184,7 @@ require "basedatos.php";
         $stmt->execute();
 
         while($row = $stmt->fetch()) {
-            echo "<p style=\"color: red;\"> Nombre: ".$row->titulo.", Descripcion : ".$row->descripcion.", Precio: ".$row->precio.", Fecha Publicacion: ".$row->fchPublicacion.", Nombre Vendedor: ".$row->usuario.", Categoria: ".$row->nombre ;
+            echo "<tr><td>Nombre</td><td>".$row->titulo."</td></tr><tr><td>Descripcion</td><td>".$row->descripcion."</td><tr><td>Precio</td><td>".$row->precio."</td></tr><tr><td>Fecha Publicacion</td><td>".$row->fchPublicacion."</td></tr><tr><td>Nombre Vendedor</td><td>".$row->usuario."</td></tr><tr><td>Categoria</td><td>".$row->nombre."</td></tr>";
         }
 
     }
