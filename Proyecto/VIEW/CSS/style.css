@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+body{
+    width: 100%;
+}
+/*Fuentes*/
+h1{
+    font-family: 'Nunito', sans-serif;
+}
+
+p{
+    font-family: "Comfortaa";
+    font-size: 13px;
+}
+
+a{
+    text-decoration: none;
+    color: #6699FF;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+a:hover{
+    font-weight: bold;
+    color: #7F59DF;
+
+}
+
+/*a:visited{
+    color: #66FFC1;
+}*/
+
+/*Fin de fuentes*/
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items : center;
+    height: 120px;
+}
+
+#logotipo{
+    height: 100%;
+}
+
+#logotipo img{
+    width: 100%;
+    height: 100%;
+}
+
+#botonMenu {
+    font-size: 3em;
+    margin-right: 0.5em;
+}
+
+footer{
+    color: white;
+    width: 100%;
+    height: 5em;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#licencia{
+    display: flex;
+}
+
+#w3{
+    display: flex;
+    flex-direction: column;
+}
+
+#menu-vertical {
+    position: fixed;
+    height: 100%;
+    width: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.8);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 0.4s;
+    padding: 1rem 0;
+}
+
+#menu-vertical .boton-cerrar {
+    position: absolute;
+    top:    1rem;
+    right: 1rem;
+    font-size: 4rem;
+    display: block;
+    padding: 0;
+    line-height: 1.5rem;
+    margin: 0;
+    height: 10%;
+    width: 10%;
+    text-align: center;
+
+}
+#buscador{
+    width: 80%;
+    display: flex;
+    height: 37px;
+    margin-left: 15px;
+
+}
+#busqueda{
+    width: 70%;
+    border-radius: 20px;
+    padding: 5px;
+}
+#buscar{
+    width: 30%;
+    border-radius: 20px;
+}
+
+#perfil{
+    margin-left: 15px;
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    font-size: 24px;
+    min-width: 120px;
+}
+
+#categorias{
+    height: 80%;
+    margin-left: 15px;
+    padding:0;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+}
+
+#categorias div {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 80%;
+    min-width: 120px;
+    font-size: 24px;
+}
+

@@ -15,12 +15,6 @@
 
 ?>
 
-    <div id="acceptCookies" style=<?=$contCookies?>>
-            <i class="fas fa-cookie-bite"></i>
-            <p>¿Desea aceptar que almacenemos información mediante Cookies?</p>
-            <input type="button" id="permisoCookies" value="Acepto">
-    </div>
-
     <div id="contMain">
         <div id="carruselPubli">
             <ul id="listaPubli">
