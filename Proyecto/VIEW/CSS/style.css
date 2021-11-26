@@ -1,17 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@font-face{
+    font-family: 'MyWebFont';
+    src: url('Jonah.ttf') format('truetype');
+}
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: content-box;
+    list-style: none;
 }
 
 body{
+    height: 100vh;
     width: 100%;
 }
 /*Fuentes*/
 h1{
-    font-family: 'Nunito', sans-serif;
+    font-family: "MyWebFont";
+    font-size: 32px;
+}
+
+label{
+    font-family: "Comfortaa";
+    font-size: 13px;
 }
 
 p{
@@ -30,6 +42,11 @@ a:hover{
     font-weight: bold;
     color: #7F59DF;
 
+}
+
+input{
+    font-family: "Comfortaa";
+    font-size: 13px;
 }
 
 /*a:visited{
@@ -152,3 +169,221 @@ footer{
     font-size: 24px;
 }
 
+/*Anuncio*/
+
+#crearAnuncio{
+    text-align: center;
+}
+
+#formNuevoAn{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+
+#botonPublicar{
+    transition: 0.3s;
+}
+
+#botonCancel{
+    transition: 0.3s;
+}
+
+#botonPublicar:hover{
+    background-color: #33805D;
+    color: white;
+}
+
+#botonCancel:hover{
+    background-color: #693380;
+    color: white;
+}
+/*Index*/
+
+#info{
+    display: flex;
+    align-items: center;
+}
+
+#fotoInfo{
+    width: 50%;
+    overflow-y: auto;
+}
+
+#fotoInfo img{
+    width: 100%;
+}
+
+#info p{
+    width: 50%;
+    text-align: center;
+    padding: 15px;
+}
+/*PERFIL*/
+#contPerfil{
+    margin: 0 auto;
+    border: solid #263960 3px;
+    display: flex;
+    flex-direction: column;
+}
+#navPerfil{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid #263960 1.6px;
+}
+#navPerfil input{
+    transition: 0.3s;
+}
+
+#navPerfil input:hover{
+    background-color: #6699FF;
+    color: white;
+}
+
+/*EDITARPERFIL*/
+
+#EditarPerfil{
+    text-align: center;
+}
+#fPerfil{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+#fPerfil label{
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#fPerfil label span{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#updatePerfil{
+    transition: 0.3s;
+}
+
+#updatePerfil:hover{
+    background-color: #33805D;
+    color: white;
+}
+
+#deletePerfil{
+    transition: 0.3s;
+}
+
+#deletePerfil:hover{
+    background-color: #693380;
+    color: white;
+}
+
+/*REGISTRO*/
+#contRegistro{
+    text-align: center;
+}
+#registro{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+#registro label{
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#bRegistrarse{
+    transition: 0.3s;
+}
+
+#bRegistrarse:hover{
+    background-color: #33805D;
+    color: white;
+}
+
+/*LOGIN*/
+#contLogin{
+    text-align: center;
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+#login label{
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#bLogin{
+    transition: 0.3s;
+}
+
+#bLogin:hover{
+    background-color: #33805D;
+    color: white;
+}
+/*CARRUSEL ???????????*/
+#carruselPubli ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    border-bottom: solid #263960 3px;
+}
+
+/*CATEGORIAS ?????????*/
+#categoriasInx div {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 5px;
+    min-width: 120px;
+    font-size: 24px;
+    border-bottom: solid #263960 3px;;
+}
+
+@media only screen and (min-width: 480px){
+    #crearAnuncio{
+        text-align: center;
+        padding: 15px;
+        margin: 20px;
+    }
+
+    #formNuevoAn{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+
+    #fPerfil{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+
+    #registro{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+    #login{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+    #contMain{
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+    #contPerfil{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+    #info{
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+}
