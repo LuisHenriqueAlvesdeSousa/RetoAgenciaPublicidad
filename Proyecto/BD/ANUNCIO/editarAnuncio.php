@@ -1,5 +1,6 @@
 <?php
     require "/BD/CONEXION/conexion.php";
+function updateAnuncio(){
 try{
     $anuncio = json_decode($_POST["anuncio"]);
     $conexion = new Conexion();
@@ -12,5 +13,6 @@ try{
     else return "";
 }catch(Exception $e){
     echo "#ERROR: ".$e->getMessage();
+}
 }
 ?>

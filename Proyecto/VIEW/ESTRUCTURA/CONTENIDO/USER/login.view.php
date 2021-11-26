@@ -10,6 +10,7 @@
 <body>
 
      <div id="contLogin">
+        <h1>LOGIN</h1>
         <form id="login">
             <label for="email">
                 <span>Email</span>
