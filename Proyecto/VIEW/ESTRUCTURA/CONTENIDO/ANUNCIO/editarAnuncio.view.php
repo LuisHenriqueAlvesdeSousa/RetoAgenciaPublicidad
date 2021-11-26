@@ -2,7 +2,7 @@
 <html lang="es">
 <?php
     //Le paso la variable para el titulo de la página en cuestión
-    $title_pag="LoVendo - Nuevo Anuncio";
+    $title_pag="LoVendo - Editar Anuncio";
     require "./VIEW/ESTRUCTURA/ESTATICO/head.meta.php";
 
 ?>
@@ -15,8 +15,8 @@
     require "./VIEW/ESTRUCTURA/ESTATICO/nav.view.php";
 
 ?>
-    <div id="crearAnuncio">
-        <h1>Crear Anuncio</h1>
+    <div id="editarAnuncio">
+        <h1>Editar Anuncio</h1>
         <form name="formularioAnuncio" action="<?echo $_SERVER["PHP_SELF"]?>" type="POST" id="formNuevoAn" enctype="multipart/form-data">
             <!--Introducir datos del anuncio-->
             <input type="text" name="titulo" id="tituloAnuncio"placeholder="Titulo*" />
@@ -46,7 +46,7 @@
 <?php
 require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
 ?>
-<script src="./MAIN/ANUNCIO/nuevoAnuncio.js"></script>
+<script src="./MAIN/ANUNCIO/editarAnuncio.js"></script>
 </body>
 </html>
 

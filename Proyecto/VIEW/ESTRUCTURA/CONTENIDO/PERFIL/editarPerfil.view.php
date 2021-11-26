@@ -55,7 +55,7 @@
         </label>
         <div id="acciones">
             <input type="submit" id="updatePerfil" value="Actualizar Datos"> <!--color verde-->
-            <input type="button" id="deletePErfil" value="Eliminar Perfil"> <!--color rojo-->
+            <input type="button" id="deletePerfil" value="Eliminar Perfil"> <!--color rojo-->
         </div>
     </form>
 </div>

@@ -82,12 +82,6 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, aspernatur recusandae ut voluptates nostrum similique voluptatibus architecto consequuntur eveniet qui sit suscipit, quis enim sequi praesentium ea nihil, quos maiores.</p>
     </div>
     
-    <div id="topVendedor">
-        <div id="top1">
-            <p id="nombreVendedor"></p>
-            <!-- añadir div de productos -->
-        </div>
-    </div>
 
 <?php
 

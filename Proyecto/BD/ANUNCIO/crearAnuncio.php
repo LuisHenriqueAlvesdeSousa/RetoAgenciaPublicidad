@@ -3,7 +3,7 @@
     try{
     require "/BD/CONEXION/conexion.php";
 
-    $anuncio = json_decode($_POST["json"]);
+    $anuncio = json_decode($_POST["anuncio"]);
 
     $conexion = new Conexion();
     $c = $conexion.getConexion();

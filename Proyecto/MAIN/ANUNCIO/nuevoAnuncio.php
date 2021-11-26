@@ -1,20 +1,12 @@
 <?php
-    require "/BD/CONEXION/conexion.php";
-    $conexion = new Conexion();
-    $cnn = $conexion->getConexion();
-    llenarSelect();
-    //Poblar la select
+    require "/UML/Anuncio/Anuncio.php";
+    require "/EXCEPTIONS/mensajeError.php";
+    require "/BD/ANUNCIO/crearAnuncio.php";
 
-    function llenarSelect(){
-        $ssql = "SELECT * FROM Categoria";
-        $rs = mysql_query($ssql);
-        while($fila = mysql_fetch_array($rs)){
-            echo "<option value=".$fila["idCategoria"].">".$fila["nombre"]."</option>";
-        }
-        mysql_free_result($rs);
+    if(isset($_POST["anuncio"])){
+        $an = json_decode($_POST["anuncio"]);
+        $anuncio = new Anuncio(null, $an->titulo, $an->descripcion, $an->precio, null, $an->pathFoto, $an->fchPublicacion, $an->idPerfil_Admin, null, $an->idCategoria);
     }
-//Comprobación de que los campos obligatorios contienen datos
 
-
-require "nuevoAnuncio.view.php";
+    require "/VIEW/ESTRUCTURA/CONTENIDO/ANUNCIO/nuevoAnuncio.view.php";
 ?>

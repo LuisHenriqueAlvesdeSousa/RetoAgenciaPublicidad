@@ -10,6 +10,7 @@
 <body>
 
      <div id="contRegistro">
+        <h1>REGISTRO</h1>
         <form id="registro">
             <label for="email">
                 <span>Email</span>
