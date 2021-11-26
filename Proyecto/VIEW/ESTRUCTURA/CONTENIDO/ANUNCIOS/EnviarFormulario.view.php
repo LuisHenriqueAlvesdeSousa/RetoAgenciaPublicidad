@@ -9,6 +9,13 @@
 </head>
 <body>
 <main>
+  
+<?php 
+
+require "./VIEW/ESTRUCTURA/ESTATICO/header.view.php"; 
+require "./VIEW/ESTRUCTURA/ESTATICO/nav.view.php"
+
+?>
 <div class="cuerpo">
   <div class="principal">
         <h1>Enviale un correo al vendedor</h1>
@@ -38,5 +45,10 @@
   </section>
 </div>
 </main>
+<?php
+
+    require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
+
+?>
 </body>
 </html>

@@ -10,7 +10,14 @@
     <script src="jquery-3.5.1.js"></script>
     <script src="verProductos.js"></script>
 </head>
+
 <body>
+<?php 
+
+require "./VIEW/ESTRUCTURA/ESTATICO/header.view.php";
+require "./VIEW/ESTRUCTURA/ESTATICO/nav.view.php"
+
+?>
 <div id="contenido">
     <h1 id="titulo">Busqueda avanzanda</h1>
     <form action="../../../../MAIN/ANUNCIO/verProductos.php
@@ -58,5 +65,11 @@
     ?>
     </fieldset>
 </div>   
+
+<?php
+
+    require "./VIEW/ESTRUCTURA/ESTATICO/footer.view.php"
+
+?>
 </body>
 </html>
