@@ -1,0 +1,598 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+@font-face{
+    font-family: 'MyWebFont';
+    src: url('Jonah.ttf') format('truetype');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+    list-style: none;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+}
+/*Fuentes*/
+h1{
+    font-family: "MyWebFont";
+    font-size: 32px;
+}
+
+label{
+    font-family: "Comfortaa";
+    font-size: 13px;
+}
+
+p{
+    font-family: "Comfortaa";
+    font-size: 13px;
+}
+
+a{
+    text-decoration: none;
+    color: #6699FF;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+a:hover{
+    font-weight: bold;
+    color: #7F59DF;
+
+}
+
+input{
+    font-family: "Comfortaa";
+    font-size: 13px;
+}
+
+/*a:visited{
+    color: #66FFC1;
+}*/
+
+/*Fin de fuentes*/
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items : center;
+    height: 120px;
+}
+
+#logotipo{
+    height: 100%;
+}
+
+#logotipo img{
+    width: 100%;
+    height: 100%;
+}
+
+#botonMenu {
+    font-size: 3em;
+    margin-right: 0.5em;
+}
+
+footer{
+    color: white;
+    width: 100%;
+    height: 5em;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#licencia{
+    display: flex;
+}
+
+#w3{
+    display: flex;
+    flex-direction: column;
+}
+
+#menu-vertical {
+    position: fixed;
+    height: 100%;
+    width: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.8);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: 0.4s;
+    padding: 1rem 0;
+}
+
+#menu-vertical .boton-cerrar {
+    position: absolute;
+    top:    1rem;
+    right: 1rem;
+    font-size: 4rem;
+    display: block;
+    padding: 0;
+    line-height: 1.5rem;
+    margin: 0;
+    height: 10%;
+    width: 10%;
+    text-align: center;
+
+}
+#buscador{
+    width: 80%;
+    display: flex;
+    height: 37px;
+    margin-left: 15px;
+
+}
+#busqueda{
+    width: 70%;
+    border-radius: 20px;
+    padding: 5px;
+}
+#buscar{
+    width: 30%;
+    border-radius: 20px;
+}
+
+#perfil{
+    margin-left: 15px;
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    font-size: 24px;
+    min-width: 120px;
+}
+
+#categorias{
+    height: 80%;
+    margin-left: 15px;
+    padding:0;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+}
+
+#categorias div {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 80%;
+    min-width: 120px;
+    font-size: 24px;
+}
+
+/*Anuncio*/
+
+#crearAnuncio{
+    text-align: center;
+}
+
+#formNuevoAn{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+
+#botonPublicar{
+    transition: 0.3s;
+}
+
+#botonCancel{
+    transition: 0.3s;
+}
+
+#botonPublicar:hover{
+    background-color: #33805D;
+    color: white;
+}
+
+#botonCancel:hover{
+    background-color: #693380;
+    color: white;
+}
+/*Index*/
+
+#info{
+    display: flex;
+    align-items: center;
+}
+
+#fotoInfo{
+    width: 50%;
+    overflow-y: auto;
+}
+
+#fotoInfo img{
+    width: 100%;
+}
+
+#info p{
+    width: 50%;
+    text-align: center;
+    padding: 15px;
+}
+/*PERFIL*/
+#contPerfil{
+    margin: 0 auto;
+    border: solid #263960 3px;
+    display: flex;
+    flex-direction: column;
+}
+#navPerfil{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid #263960 1.6px;
+}
+#navPerfil input{
+    transition: 0.3s;
+}
+
+#navPerfil input:hover{
+    background-color: #6699FF;
+    color: white;
+}
+
+/*EDITARPERFIL*/
+
+#EditarPerfil{
+    text-align: center;
+}
+#fPerfil{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+#fPerfil label{
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#fPerfil label span{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#updatePerfil{
+    transition: 0.3s;
+}
+
+#updatePerfil:hover{
+    background-color: #33805D;
+    color: white;
+}
+
+#deletePerfil{
+    transition: 0.3s;
+}
+
+#deletePerfil:hover{
+    background-color: #693380;
+    color: white;
+}
+
+/*REGISTRO*/
+#contRegistro{
+    text-align: center;
+}
+#registro{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+#registro label{
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#bRegistrarse{
+    transition: 0.3s;
+}
+
+#bRegistrarse:hover{
+    background-color: #33805D;
+    color: white;
+}
+
+/*LOGIN*/
+#contLogin{
+    text-align: center;
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    border: solid #263960 3px; 
+}
+#login label{
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#bLogin{
+    transition: 0.3s;
+}
+
+#bLogin:hover{
+    background-color: #33805D;
+    color: white;
+}
+/*CARRUSEL ???????????*/
+#carruselPubli ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    border-bottom: solid #263960 3px;
+}
+
+/*CATEGORIAS ?????????*/
+#categoriasInx div {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding: 5px;
+    min-width: 120px;
+    font-size: 24px;
+    border-bottom: solid #263960 3px;;
+}
+
+@media only screen and (min-width: 480px){
+    #crearAnuncio{
+        text-align: center;
+        padding: 15px;
+        margin: 20px;
+    }
+
+    #formNuevoAn{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+
+    #fPerfil{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+
+    #registro{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+    #login{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+    #contMain{
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+    #contPerfil{
+    margin-left: 25%;
+    margin-right: 25%;
+    }
+    #info{
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+}
+
+.container-1{
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 1em 0;
+  }
+
+  .container-1 input#busqueda{
+    width: 18em;
+    height: 3em;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    color: white;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+
+  }
+
+
+  .container-1 #bBuscar{
+        border: none;
+        justify-content: center;
+        z-index: 1;
+        width: 5em;
+        height: 3.1em;
+        background: #4f5b66;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 0 5px 5px 0;
+        color: white;
+  }
+
+#filtrados{
+    text-align: center;
+}
+
+#filtrados select{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius:5px;
+}
+
+#contenedor {
+    display: grid;
+    grid-gap: .5em;
+    grid-template-columns:25% 70%;
+}
+
+  
+#titulo{
+    font-family: JonahAFYL;
+    font-size: 20px;
+    margin: 1em;
+    text-align: center;
+}
+
+fieldset{
+    margin: .2em;
+    
+}
+
+fieldset legend{
+    font-size: 20px;
+    text-align: center;
+}
+
+#tipoOrdenar div{
+    margin: .3em;
+}
+
+#tipoOrdenar div label{
+    padding: .3em;
+}
+
+.contAnuncios{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    grid-auto-rows: 100px;
+    margin: 1em;
+}
+
+#producto{
+    border: 1px solid black;
+    text-align: center;
+    padding: 1em 0;
+    margin: 0.2em;
+    display: grid;
+    border-radius: 10px;
+    -moz-box-shadow:    inset 0 0 5px 5px black;
+    -webkit-box-shadow: inset 0 0 5px 5px black;
+    box-shadow:         inset 0 0 5px 5px black;
+}
+
+#detalles{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+@media screen and (min-width: 480px){
+    .contAnuncios{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: 100px;
+        margin: 1em;
+    }
+   
+    #detalles{
+        width: 225%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+}
+
+@media screen and (min-width: 980px){
+    .contAnuncios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: 100px;
+        margin: 1em;
+    }
+
+    #detalles{
+        width: 325%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    
+}
+/*Formulario correo*/
+
+.cuerpo{
+    margin-top: 1.5em;
+    width: 25em;
+    padding: 1em;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    background-color: #3B83BD;
+}
+
+#correo label {
+    display:block;
+    margin-top:20px;
+    letter-spacing:1px;
+}
+ 
+.principal {
+    width:15em;
+    font-size: 20px;
+    font-family: Comfortaa;
+    margin: 0 auto;
+    text-align: center;
+}
+ 
+#correo {
+    width:20em;
+    margin: 0 auto;
+}
+ 
+#correo input, textarea {
+    margin: 1em;
+    width: 18em;
+    height: 3em;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    color: white;
+    padding-left: .7em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+ 
+#correo textarea {
+    height:10em;
+    padding-top: .3em;
+}
+ 
+#submit {
+    width:93%;
+    height:3em;
+    border:none;
+    margin-top:20px;
+    cursor:pointer;
+    margin: 0 1em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.notifCorrecto{
+    font-size: 20px;
+    font-family: Comfortaa;
+    width: 14em;
+    text-align: center;
+    padding: 1em;
+}
